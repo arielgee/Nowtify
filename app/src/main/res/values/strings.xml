@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">No(w)tify</string>
+    <string name="app_button">No(w)tify !</string>
+    <string name="icon_option_desc">Notification icon option</string>
+    <string name="pick_icon_dialog_title">Pick an Icon</string>
+    <string name="pick_contact_icon_dialog_title">Pick a Contact Icon</string>
+    <string name="title_camera">Camera</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="title_contacts">Contacts</string>
+    <string name="content_desc_nowtify_icon">No(w)tify icon</string>
+    <string name="hint_title">title</string>
+    <string name="hint_content">content</string>
+
+    <string name="menu_entry_debug_list_nowtifications">List ActiveNowtifications</string>
+    <string name="menu_entry_debug_clear_nowtifications">Clear ActiveNowtifications (!)</string>
+    <string name="menu_entry_debug_list_contacts">List contacts</string>
+
+
+    <string name="fmt_debug_list_nowtification_line">%1$d. {Id=%2$d, Title=%3$s}\n</string>
+
+    <string name="title_whoops_sorry">Whoops, Sorry…</string>
+    <string name="fmt_error_cant_edit_nowtify">Failed miserably .\nThis Nowtification (id:%1$d) cannot be edited.\n\nBest to dismiss it and create a new one.</string>
+    <string name="fmt_error_too_many_nowtifications">You have waaaaay too many Nowtifications. %1$d should be enough for you.</string>
+    <string name="error_empty_title">You\'ve got to give me something to work with in the title.</string>
+    <string name="error_get_thumbnail">Failed to get the gallery image.</string>
+    <string name="action_dismiss">Dismiss</string>
+    <string name="action_edit">Edit</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="menu_entries_debug">
+        <item>@string/menu_entry_debug_list_contacts</item>
+        <item>@string/menu_entry_debug_list_nowtifications</item>
+        <item>@string/menu_entry_debug_clear_nowtifications</item>
+    </string-array>
+
+    <integer-array name="nowtify_stock_icons">
+        <item>@drawable/ic_nowtify_icon00</item>
+        <item>@drawable/ic_nowtify_icon01</item>
+        <item>@drawable/ic_nowtify_icon02</item>
+        <item>@drawable/ic_nowtify_icon03</item>
+        <item>@drawable/ic_nowtify_icon04</item>
+        <item>@drawable/ic_nowtify_icon05</item>
+        <item>@drawable/ic_nowtify_icon06</item>
+        <item>@drawable/ic_nowtify_icon07</item>
+        <item>@drawable/ic_nowtify_icon08</item>
+        <item>@drawable/ic_nowtify_icon09</item>
+        <item>@drawable/ic_nowtify_icon10</item>
+        <item>@drawable/ic_nowtify_icon11</item>
+        <item>@drawable/ic_nowtify_icon12</item>
+        <item>@drawable/ic_nowtify_icon13</item>
+        <item>@drawable/ic_nowtify_icon14</item>
+        <item>@drawable/ic_nowtify_icon15</item>
+        <item>@drawable/ic_nowtify_icon16</item>
+        <item>@drawable/ic_nowtify_icon17</item>
+        <item>@drawable/ic_nowtify_icon18</item>
+        <item>@drawable/ic_nowtify_icon19</item>
+        <item>@drawable/ic_nowtify_icon20</item>
+        <item>@drawable/ic_nowtify_icon21</item>
+        <item>@drawable/ic_nowtify_icon22</item>
+        <item>@drawable/ic_nowtify_icon23</item>
+        <item>@drawable/ic_nowtify_icon24</item>
+        <item>@drawable/ic_nowtify_icon25</item>
+        <item>@drawable/ic_nowtify_icon26</item>
+        <item>@drawable/ic_nowtify_icon27</item>
+        <item>@drawable/ic_nowtify_icon28</item>
+        <item>@drawable/ic_nowtify_icon29</item>
+    </integer-array>
+
+</resources>

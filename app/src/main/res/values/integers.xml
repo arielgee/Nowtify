@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_icon_grid_row_count">100</integer>
+
+    <integer name="max_title_length">50</integer>
+</resources>

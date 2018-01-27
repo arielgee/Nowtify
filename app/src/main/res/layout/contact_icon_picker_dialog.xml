@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/icon_picker_small_dimen">
+
+
+        <com.arielg.nowtify.IconPicker
+            android:id="@+id/layout_icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/image_icon_margin"
+            android:background="@android:color/black"
+            android:columnCount="1"
+            android:padding="2dp"
+            android:rowCount="1">
+        </com.arielg.nowtify.IconPicker>
+
+    </ScrollView>
+
+</LinearLayout>

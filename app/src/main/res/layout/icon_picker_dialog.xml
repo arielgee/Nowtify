@@ -1,0 +1,154 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/icon_picker_small_dimen"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.143"/>
+
+        <LinearLayout
+            android:id="@+id/layout_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:padding="@dimen/icon_picker_small_dimen"
+            android:orientation="vertical"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/image_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/title_camera"
+                android:scaleType="center"
+                android:src="@drawable/ic_camera"/>
+
+            <TextView
+                android:id="@+id/text_camera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/title_camera"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAlignment="center"
+                android:textColor="@color/silver"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.143"/>
+
+        <LinearLayout
+            android:id="@+id/layout_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:padding="@dimen/icon_picker_small_dimen"
+            android:orientation="vertical"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/image_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/title_gallery"
+                android:scaleType="center"
+                android:src="@drawable/ic_gallery"/>
+
+            <TextView
+                android:id="@+id/text_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/title_gallery"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAlignment="center"
+                android:textColor="@color/silver"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.143"/>
+
+        <LinearLayout
+            android:id="@+id/layout_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.143"
+            android:padding="@dimen/icon_picker_small_dimen"
+            android:orientation="vertical"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/image_contacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/title_contacts"
+                android:scaleType="center"
+                android:src="@drawable/ic_contacts"/>
+
+            <TextView
+                android:id="@+id/text_contacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/title_contacts"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAlignment="center"
+                android:textColor="@color/silver"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.143"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/icon_picker_small_dimen"
+        android:layout_marginRight="@dimen/icon_picker_small_dimen"
+        android:background="@android:color/darker_gray"/>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/icon_picker_small_dimen">
+
+
+        <com.arielg.nowtify.IconPicker
+            android:id="@+id/layout_icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/image_icon_margin"
+            android:background="@android:color/black"
+            android:columnCount="1"
+            android:padding="2dp"
+            android:rowCount="1">
+        </com.arielg.nowtify.IconPicker>
+
+    </ScrollView>
+
+</LinearLayout>
