@@ -26,4 +26,8 @@
     <string name="action_dismiss">Dismiss</string>
     <string name="action_edit">Edit</string>
 
+
+    <string name="channel_name">No(w)tify</string>
+    <string name="channel_description">Nowtification</string>
+
 </resources>

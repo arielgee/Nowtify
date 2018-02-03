@@ -42,8 +42,8 @@ public class ContactIconPickerDialog extends DialogFragment implements IconPicke
         builder.setView(viewRoot);
         builder.setTitle(R.string.pick_contact_icon_dialog_title);
 
-        mScrollView = (ScrollView)(viewRoot.findViewById(R.id.scroll_view));
-        mIconPicker = (IconPicker)(viewRoot.findViewById(R.id.layout_icons));
+        mScrollView = viewRoot.findViewById(R.id.scroll_view);
+        mIconPicker = viewRoot.findViewById(R.id.layout_icons);
 
         mIconPicker.setIconSelectedListener(this);
         mScrollView.addOnLayoutChangeListener(mLayoutChangeListener);

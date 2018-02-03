@@ -1,20 +1,18 @@
 package com.arielg.nowtify;
 
 import android.app.IntentService;
-import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Icon;
+import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.util.Patterns;
 
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 public class NowtificationService extends IntentService {
@@ -24,9 +22,11 @@ public class NowtificationService extends IntentService {
     private static final String ACTION_DISMISS = "com.arielg.nowtify.nowtificationService.action.DISMISS";
     public static final String ACTION_EDIT = "com.arielg.nowtify.nowtificationService.action.EDIT";
     public static final String PARAM_NOTIFICATION_ID = "com.arielg.nowtify.nowtificationService.extra.NOTIFICATION_ID";
+    private static final String NOTIFICATION_CHANNEL_ID = "com.arielg.nowtify.channel";
 
     private final static NowtificationService mInstance = new NowtificationService();
 
+    private static NotificationChannel mNotificationChannel = null;
 
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +38,11 @@ public class NowtificationService extends IntentService {
     ////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////
     public static void Notify(Context context, Nowtification n) {
+
+        if(mNotificationChannel == null) {
+            mInstance.createNotificationChannel(context);
+        }
+
         mInstance.notify(context, n);
     }
 
@@ -59,6 +64,29 @@ public class NowtificationService extends IntentService {
             paramNotificationID = intent.getIntExtra(PARAM_NOTIFICATION_ID, -1);
             handleActionEdit(paramNotificationID);
         }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////
+    private void createNotificationChannel(Context context) {
+
+        NotificationManager notificationMgr = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // The user-visible name of the channel + The user-visible description of the channel.
+        CharSequence name = context.getString(R.string.channel_name);
+        String description = context.getString(R.string.channel_description);
+
+        mNotificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
+        // Configure the notification channel.
+        mNotificationChannel.setDescription(description);
+
+        // Sets the notification light color for notifications posted to this
+        // channel, if the device supports this feature.
+        mNotificationChannel.enableLights(true);
+        mNotificationChannel.setLightColor(Color.CYAN);
+        mNotificationChannel.enableVibration(true);
+        mNotificationChannel.setVibrationPattern(new long[]{100, 200, 300});
+        notificationMgr.createNotificationChannel(mNotificationChannel);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
@@ -107,11 +135,11 @@ public class NowtificationService extends IntentService {
     ////////////////////////////////////////////////////////////////////////////////////
     private void notify(Context context, Nowtification n) {
 
-        Notification.Style style = null;
+        NotificationCompat.Style style = null;
         PendingIntent contentIntent = null;
 
         if(n.getContent().contains("\n")) {
-            style = new Notification.BigTextStyle().bigText(n.getContent());
+            style = new NotificationCompat.BigTextStyle().bigText(n.getContent());
         }
 
         String sUri = getFirstSupportedUriInContent(n.getContent());
@@ -123,11 +151,11 @@ public class NowtificationService extends IntentService {
             contentIntent = PendingIntent.getActivity(context, n.getId(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
         }
 
-        Notification.Builder builder = new Notification.Builder(context)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setTicker(n.getTitle())
                 .setContentTitle(n.getTitle())
                 .setContentText(n.getContent())
-                .setPriority(Notification.PRIORITY_MAX)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setWhen(n.getWhen())
                 .setOngoing(n.isOngoing())
                 .setSmallIcon(R.drawable.ic_nowtify_icon00)
@@ -135,31 +163,19 @@ public class NowtificationService extends IntentService {
                 .setStyle(style)
                 .setContentIntent(contentIntent);
 
-        Icon ic = null;
-
         Intent dismissIntent = new Intent(context, NowtificationService.class);
         dismissIntent.setAction(ACTION_DISMISS);
         dismissIntent.putExtra(PARAM_NOTIFICATION_ID, n.getId());
         PendingIntent piDismiss = PendingIntent.getService(context, n.getId(), dismissIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        //ic = Icon.createWithResource(context, android.R.drawable.ic_menu_close_clear_cancel);
-        Notification.Action actionDismiss = null;
-        if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            actionDismiss = new Notification.Action.Builder(ic, context.getString(R.string.action_dismiss), piDismiss).build();
-        } else if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            actionDismiss = new Notification.Action.Builder(android.R.drawable.ic_menu_close_clear_cancel, context.getString(R.string.action_dismiss), piDismiss).build();
-        }
+        NotificationCompat.Action actionDismiss;
+        actionDismiss = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_close_clear_cancel, context.getString(R.string.action_dismiss), piDismiss).build();
 
         Intent editIntent = new Intent(context, NowtificationService.class);
         editIntent.setAction(ACTION_EDIT);
         editIntent.putExtra(PARAM_NOTIFICATION_ID, n.getId());
         PendingIntent piEdit = PendingIntent.getService(context, n.getId(), editIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        //ic = Icon.createWithResource(context, android.R.drawable.ic_menu_edit);
-        Notification.Action actionEdit = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            actionEdit = new Notification.Action.Builder(ic, context.getString(R.string.action_edit), piEdit).build();
-        } else if(android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            actionEdit = new Notification.Action.Builder(android.R.drawable.ic_menu_edit, context.getString(R.string.action_edit), piEdit).build();
-        }
+        NotificationCompat.Action actionEdit;
+        actionEdit = new NotificationCompat.Action.Builder(android.R.drawable.ic_menu_edit, context.getString(R.string.action_edit), piEdit).build();
 
         builder.addAction(actionDismiss).addAction(actionEdit);
 

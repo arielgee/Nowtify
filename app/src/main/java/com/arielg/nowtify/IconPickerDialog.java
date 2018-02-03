@@ -57,11 +57,11 @@ public class IconPickerDialog extends DialogFragment implements IconPicker.IconP
         builder.setView(viewRoot);
         builder.setTitle(R.string.pick_icon_dialog_title);
 
-        LinearLayout mLayoutCamera = (LinearLayout) (viewRoot.findViewById(R.id.layout_camera));
-        LinearLayout mLayoutGallery = (LinearLayout) (viewRoot.findViewById(R.id.layout_gallery));
-        LinearLayout mLayoutContacts = (LinearLayout) (viewRoot.findViewById(R.id.layout_contacts));
-        mScrollView = (ScrollView)(viewRoot.findViewById(R.id.scroll_view));
-        mIconPicker = (IconPicker)(viewRoot.findViewById(R.id.layout_icons));
+        LinearLayout mLayoutCamera = viewRoot.findViewById(R.id.layout_camera);
+        LinearLayout mLayoutGallery = viewRoot.findViewById(R.id.layout_gallery);
+        LinearLayout mLayoutContacts = viewRoot.findViewById(R.id.layout_contacts);
+        mScrollView = viewRoot.findViewById(R.id.scroll_view);
+        mIconPicker = viewRoot.findViewById(R.id.layout_icons);
 
         mLayoutCamera.setOnClickListener(this);
         mLayoutGallery.setOnClickListener(this);

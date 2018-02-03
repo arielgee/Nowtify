@@ -34,10 +34,10 @@ public class MainActivity extends Activity implements
         setContentView(R.layout.activity_main);
 
         // get UX members
-        mImageIcon = (ImageView) findViewById(R.id.imageIcon);
-        mEditTitle = (EditText) findViewById(R.id.editTitle);
-        mEditContent = (EditText) findViewById(R.id.editContent);
-        mButtonDebug = (FrameLayout)findViewById(R.id.buttonDebug);
+        mImageIcon = findViewById(R.id.imageIcon);
+        mEditTitle =  findViewById(R.id.editTitle);
+        mEditContent = findViewById(R.id.editContent);
+        mButtonDebug = findViewById(R.id.buttonDebug);
 
         /*
         mEditContent.addTextChangedListener(new TextWatcher() {
